@@ -1,7 +1,14 @@
 import { PropsWithChildren, createContext, useEffect, useState } from "react";
 import { sampleData } from "../data/sampleData";
 import { RecipeData, blankRecipe } from "../types/RecipeDataTypes";
-const ScalerContext = createContext({});
+
+export type ScalerContextType = {
+  scaledRecipe: RecipeData;
+  loadRecipe: (newRecipe: RecipeData) => void;
+  setTargetWeight: (newWeight: number) => void;
+};
+
+export const ScalerContext = createContext<ScalerContextType | null>(null);
 
 export const ScalerWrapper = (props: PropsWithChildren) => {
   const [recipe, setRecipe] = useState(blankRecipe);
