@@ -1,4 +1,7 @@
+import { TargetScaleSetter } from "./components/TargetScaleSett/TargetScaleSetter";
 import { ScalerWrapper } from "./context/ScalerContext";
+import "@mantine/core/styles.css";
+
 
 const App = () => {
   return (
@@ -6,6 +9,9 @@ const App = () => {
       <main>
         <section>
           <h1>Pizza</h1>
+        </section>
+        <section>
+          <TargetScaleSetter />
         </section>
       </main>
     </ScalerWrapper>
