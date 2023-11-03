@@ -2,16 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import { ScalerContext, ScalerContextType } from "../../context/ScalerContext";
 import { NumberInput } from "@mantine/core";
 export const TargetScaleSetter = () => {
-  const { setTargetWeight } = useContext(ScalerContext) as ScalerContextType;
+  const { setTargetWeight, targetWeight } = useContext(
+    ScalerContext
+  ) as ScalerContextType;
 
   const [pizzaCount, setPizzaCount] = useState<string | number>(4);
   const [pizzaSize, setPizzaSize] = useState<string | number>(250);
-  const [calculatedTargetWeight, setCalculatedTargetWeight] =
-    useState<number>(1000);
 
   useEffect(() => {
-    setCalculatedTargetWeight((pizzaSize as number) * (pizzaCount as number));
-  }, [pizzaCount, pizzaSize]);
+    setTargetWeight((pizzaSize as number) * (pizzaCount as number));
+  }, [pizzaCount, pizzaSize, setTargetWeight]);
   return (
     <div className="flex gap-4">
       <NumberInput
@@ -26,7 +26,7 @@ export const TargetScaleSetter = () => {
       />
       <h2>
         total weight:
-        {calculatedTargetWeight}
+        {targetWeight}
       </h2>
     </div>
   );

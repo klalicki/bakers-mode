@@ -6,6 +6,7 @@ export type ScalerContextType = {
   scaledRecipe: RecipeData;
   loadRecipe: (newRecipe: RecipeData) => void;
   setTargetWeight: (newWeight: number) => void;
+  targetWeight: number;
 };
 
 export const ScalerContext = createContext<ScalerContextType | null>(null);
@@ -33,8 +34,8 @@ export const ScalerWrapper = (props: PropsWithChildren) => {
       });
     setRecipe(newRecipe);
     setRecipeWeight(totalWeight);
-    scaleRecipe();
-    console.log(totalWeight);
+    // scaleRecipe();
+    // console.log(scaledRecipe);
   };
   // scales the recipe to the new target weight and saves it to scaledRecipe
   const scaleRecipe = () => {
@@ -51,12 +52,12 @@ export const ScalerWrapper = (props: PropsWithChildren) => {
   };
   useEffect(() => {
     loadRecipe(sampleData);
-    // scaleRecipe();
+    scaleRecipe();
     console.log(scaledRecipe);
-  }, []);
+  }, [recipe]);
   return (
     <ScalerContext.Provider
-      value={{ scaledRecipe, loadRecipe, setTargetWeight }}
+      value={{ scaledRecipe, loadRecipe, setTargetWeight, targetWeight }}
     >
       {props.children}
     </ScalerContext.Provider>
