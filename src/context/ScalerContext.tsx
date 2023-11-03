@@ -1,13 +1,15 @@
 import { PropsWithChildren, createContext, useState } from "react";
 import { sampleData } from "../data/sampleData";
+import { RecipeData, blankRecipe } from "../types/RecipeDataTypes";
 const ScalerContext = createContext({});
 
 export const ScalerWrapper = (props: PropsWithChildren) => {
-  const [recipe, setRecipe] = useState({});
-  const [scaledRecipe, setScaledRecipe] = useState({});
+  const [recipe, setRecipe] = useState(blankRecipe);
+  const [scaledRecipe, setScaledRecipe] = useState<RecipeData>(blankRecipe);
 
-  const loadRecipe = (newRecipe: any) => {
-    console.log(newRecipe);
+  const loadRecipe = (newRecipe: RecipeData) => {
+    const tempRecipe = { ...newRecipe };
+    console.log(tempRecipe);
   };
 
   loadRecipe(sampleData);
