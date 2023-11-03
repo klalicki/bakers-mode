@@ -8,7 +8,7 @@ export const RecipeViewer = () => {
   ) as ScalerContextType;
 
   return (
-    <section>
+    <section className="p-4 flex flex-col gap-4">
       <h2>{scaledRecipe.title}</h2>
       <h3>{scaledRecipe.description}</h3>
       <p>target weight: {targetWeight}</p>

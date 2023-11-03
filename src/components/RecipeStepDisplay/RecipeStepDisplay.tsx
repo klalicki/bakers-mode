@@ -1,5 +1,5 @@
 import type { RecipeStep } from "../../types/RecipeDataTypes";
-
+import { Card } from "@mantine/core";
 const formatWeight = (value: any) => {
   if (value < 20) {
     return value.toFixed(1);
@@ -10,8 +10,8 @@ const formatWeight = (value: any) => {
 
 export const RecipeStepDisplay = ({ stepData }: { stepData: RecipeStep }) => {
   return (
-    <article>
-      <h2>{stepData.title}</h2>
+    <article className="border-2 p-2">
+      <h2 className=" text-lg">{stepData.title}</h2>
       <ul>
         {stepData.ingredients.map((item) => {
           return (
@@ -21,6 +21,7 @@ export const RecipeStepDisplay = ({ stepData }: { stepData: RecipeStep }) => {
           );
         })}
       </ul>
+      <p>{stepData.text}</p>
     </article>
   );
 };
