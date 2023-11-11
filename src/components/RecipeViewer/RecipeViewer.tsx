@@ -9,16 +9,16 @@ export const RecipeViewer = () => {
 
   return (
     <section className="p-4 flex flex-col gap-4">
-      <h2>{scaledRecipe.title}</h2>
-      <h3>{scaledRecipe.description}</h3>
+      <h1>{scaledRecipe.title}</h1>
+      <p>{scaledRecipe.description}</p>
       <p>target weight: {targetWeight}</p>
-      <h3>Steps</h3>
+      <h2>Steps</h2>
       {scaledRecipe.steps.map((step) => {
         return (
           <RecipeStepDisplay stepData={step} ingredientList={ingredientList} />
         );
       })}
-      <h3>Cooking Notes</h3>
+      <h2>Cooking Notes</h2>
       <ul>
         {scaledRecipe.cookingNotes.map((item) => {
           return <li>{item}</li>;

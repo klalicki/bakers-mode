@@ -5,17 +5,16 @@ import "@mantine/core/styles.css";
 
 const App = () => {
   return (
-    <ScalerWrapper>
-      <main>
-        <section>
-          <h1>Pizza</h1>
-        </section>
-        <section>
+    <div className="flex flex-col items-center">
+      <ScalerWrapper>
+        <header className="max-w-3-xl">
           <TargetScaleSetter />
-        </section>
-        <RecipeViewer />
-      </main>
-    </ScalerWrapper>
+        </header>
+        <main className="max-w-3xl">
+          <RecipeViewer />
+        </main>
+      </ScalerWrapper>
+    </div>
   );
 };
 export default App;
