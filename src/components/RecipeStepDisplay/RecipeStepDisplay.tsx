@@ -10,14 +10,18 @@ const formatWeight = (value: any) => {
 export const RecipeStepDisplay = ({
   stepData,
   ingredientList,
+  stepNumber,
+  totalSteps,
 }: {
   stepData: RecipeStep;
   ingredientList: RecipeIngredient[];
+  stepNumber: number;
+  totalSteps: number;
 }) => {
   return (
     <article className="border-2 ">
       <h3 className=" text-lg p-2 bg-slate-800 text-white font-bold">
-        {stepData.title}
+        {stepNumber} of {totalSteps}: {stepData.title}
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2">
         {stepData.ingredients.length > 0 && (

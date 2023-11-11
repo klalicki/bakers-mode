@@ -7,17 +7,27 @@ export const RecipeViewer = () => {
     ScalerContext
   ) as ScalerContextType;
 
+  const stepCount = scaledRecipe.steps.length;
   return (
     <section className="p-4 flex flex-col gap-4">
-      <h1>{scaledRecipe.title}</h1>
+      <h1 className=" text-xl font-bold focus">{scaledRecipe.title}</h1>
       <p>{scaledRecipe.description}</p>
       <p>target weight: {targetWeight}</p>
       <h2>Steps</h2>
-      {scaledRecipe.steps.map((step) => {
-        return (
-          <RecipeStepDisplay stepData={step} ingredientList={ingredientList} />
-        );
-      })}
+      <ol className="flex flex-col gap-3">
+        {scaledRecipe.steps.map((step, index) => {
+          return (
+            <li tabIndex={0} className="focus:outline-8  focus:outline-red-600">
+              <RecipeStepDisplay
+                stepData={step}
+                ingredientList={ingredientList}
+                stepNumber={index + 1}
+                totalSteps={stepCount}
+              />
+            </li>
+          );
+        })}
+      </ol>
       <h2>Cooking Notes</h2>
       <ul>
         {scaledRecipe.cookingNotes.map((item) => {
