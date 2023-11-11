@@ -1,17 +1,23 @@
 export type RecipeIngredient = {
+  ingredientID: string;
+  friendlyName: string;
+};
+
+export type RecipeIngredientMeasured = {
   qty: number;
-  name: string;
+  ingredientID: string;
 };
 
 export type RecipeStep = {
   title: string;
-  ingredients: RecipeIngredient[];
+  ingredients: RecipeIngredientMeasured[];
   text: string;
 };
 
 export type RecipeData = {
   title: string;
   description: string;
+  ingredients: RecipeIngredient[];
   steps: RecipeStep[];
   cookingNotes: string[];
 };
@@ -19,6 +25,7 @@ export type RecipeData = {
 export const blankRecipe: RecipeData = {
   title: "",
   description: "",
+  ingredients: [],
   steps: [],
   cookingNotes: [],
 };

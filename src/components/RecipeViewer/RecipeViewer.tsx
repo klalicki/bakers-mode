@@ -3,7 +3,7 @@ import { ScalerContext, ScalerContextType } from "../../context/ScalerContext";
 import { RecipeStepDisplay } from "../RecipeStepDisplay/RecipeStepDisplay";
 
 export const RecipeViewer = () => {
-  const { scaledRecipe, targetWeight } = useContext(
+  const { scaledRecipe, targetWeight, ingredientList } = useContext(
     ScalerContext
   ) as ScalerContextType;
 
@@ -14,7 +14,9 @@ export const RecipeViewer = () => {
       <p>target weight: {targetWeight}</p>
       <h3>Steps</h3>
       {scaledRecipe.steps.map((step) => {
-        return <RecipeStepDisplay stepData={step} />;
+        return (
+          <RecipeStepDisplay stepData={step} ingredientList={ingredientList} />
+        );
       })}
       <h3>Cooking Notes</h3>
       <ul>

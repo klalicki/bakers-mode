@@ -1,23 +1,55 @@
-export const sampleData = {
+import { RecipeData } from "../types/RecipeDataTypes";
+
+export const sampleData: RecipeData = {
   title: "My First Pizza",
   description: "This is a sample pizza recipe",
+  ingredients: [
+    {
+      ingredientID: "0",
+      friendlyName: "water",
+    },
+    {
+      ingredientID: "1",
+      friendlyName: "salt",
+    },
+    {
+      ingredientID: "2",
+      friendlyName: "sugar",
+    },
+    {
+      ingredientID: "3",
+      friendlyName: "instant yeast",
+    },
+    {
+      ingredientID: "4",
+      friendlyName: "00 Pizza Flour",
+    },
+    {
+      ingredientID: "5",
+      friendlyName: "vital wheat gluten",
+    },
+    {
+      ingredientID: "6",
+      friendlyName: "all-purpose flour",
+    },
+  ],
   steps: [
     {
       title: "Wet ingredients",
       ingredients: [
-        { qty: 552, name: "water" },
-        { qty: 24, name: "salt" },
-        { qty: 9, name: "sugar" },
-        { qty: 6, name: "instant yeast" },
+        { qty: 552, ingredientID: "0" },
+        { qty: 24, ingredientID: "1" },
+        { qty: 9, ingredientID: "2" },
+        { qty: 6, ingredientID: "3" },
       ],
       text: "combine these ingredients in stand mixer bowl, stir with dough hook.",
     },
     {
       title: "Flours",
       ingredients: [
-        { qty: 880, name: "00 pizza flour" },
-        { qty: 40, name: "wheat gluten" },
-        { qty: 40, name: "all-purpose flour" },
+        { qty: 880, ingredientID: "4" },
+        { qty: 40, ingredientID: "5" },
+        { qty: 40, ingredientID: "6" },
       ],
       text: "add flours to liquid, and mix with dough hook on speed 4 for 10 minutes. The dough will be relatively wet.",
     },
