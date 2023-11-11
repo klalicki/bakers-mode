@@ -13,21 +13,27 @@ export const TargetScaleSetter = () => {
     setTargetWeight((pizzaSize as number) * (pizzaCount as number));
   }, [pizzaCount, pizzaSize, setTargetWeight]);
   return (
-    <div className="flex gap-4">
-      <NumberInput
-        value={pizzaCount}
-        label={"Number of Pizzas"}
-        onChange={setPizzaCount}
-      />{" "}
-      <NumberInput
-        value={pizzaSize}
-        label={"Dough per pizza"}
-        onChange={setPizzaSize}
-      />
+    <article className=" w-full border p-2">
+      <h2>Scaling</h2>
+      <div className="flex gap-2 flex-wrap">
+        <NumberInput
+          className=" w-60"
+          value={pizzaCount}
+          label={"Number of Pizzas"}
+          onChange={setPizzaCount}
+        />{" "}
+        <NumberInput
+          className=" w-60"
+          value={pizzaSize}
+          label={"Dough per pizza"}
+          onChange={setPizzaSize}
+        />
+      </div>
+
       <h2>
         total weight:
         {targetWeight}
       </h2>
-    </div>
+    </article>
   );
 };

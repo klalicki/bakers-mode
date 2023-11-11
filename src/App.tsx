@@ -7,9 +7,6 @@ const App = () => {
   return (
     <div className="flex flex-col items-center">
       <ScalerWrapper>
-        <header className="max-w-3-xl">
-          <TargetScaleSetter />
-        </header>
         <main className="max-w-3xl">
           <RecipeViewer />
         </main>

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ScalerContext, ScalerContextType } from "../../context/ScalerContext";
 import { RecipeStepDisplay } from "../RecipeStepDisplay/RecipeStepDisplay";
+import { TargetScaleSetter } from "../TargetScaleSetter/TargetScaleSetter";
 
 export const RecipeViewer = () => {
   const { scaledRecipe, targetWeight, ingredientList } = useContext(
@@ -12,8 +13,9 @@ export const RecipeViewer = () => {
     <section className="p-4 flex flex-col gap-4">
       <h1 className=" text-xl font-bold focus">{scaledRecipe.title}</h1>
       <p>{scaledRecipe.description}</p>
-      <p>target weight: {targetWeight}</p>
+      <TargetScaleSetter />
       <h2>Steps</h2>
+
       <ol className="flex flex-col gap-3">
         {scaledRecipe.steps.map((step, index) => {
           return (
