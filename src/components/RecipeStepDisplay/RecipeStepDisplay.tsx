@@ -23,9 +23,9 @@ export const RecipeStepDisplay = ({
       <h3 className=" text-lg p-2 bg-slate-800 text-white font-bold">
         {stepNumber} of {totalSteps}: {stepData.title}
       </h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2">
+      <div className="flex flex-wrap">
         {stepData.ingredients.length > 0 && (
-          <section className="p-2 flex-auto ">
+          <section className="p-2 flex-shrink flex-auto basis-full sm:basis-1/2">
             <h4 className="font-bold">Ingredients</h4>
             <ul>
               {stepData.ingredients.map((item) => {
@@ -42,7 +42,7 @@ export const RecipeStepDisplay = ({
             </ul>
           </section>
         )}
-        <section className="p-2 flex-1">
+        <section className="p-2 flex-shrink basis-full sm:basis-1/2">
           <h4 className="font-bold">Instructions</h4>
           <p>{stepData.text}</p>
         </section>
