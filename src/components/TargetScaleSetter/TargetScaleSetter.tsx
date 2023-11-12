@@ -29,8 +29,8 @@ export const TargetScaleSetter = () => {
           onChange={setUnitWeight}
         />
       </div>
-
       <p aria-live="polite">total weight: {targetWeight}g</p>
+      <div>Precision Mode: to be implemented later</div>
     </article>
   );
 };
