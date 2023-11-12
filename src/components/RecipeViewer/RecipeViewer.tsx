@@ -4,7 +4,7 @@ import { RecipeStepDisplay } from "../RecipeStepDisplay/RecipeStepDisplay";
 import { TargetScaleSetter } from "../TargetScaleSetter/TargetScaleSetter";
 
 export const RecipeViewer = () => {
-  const { scaledRecipe, targetWeight, ingredientList } = useContext(
+  const { scaledRecipe, ingredientList } = useContext(
     ScalerContext
   ) as ScalerContextType;
 

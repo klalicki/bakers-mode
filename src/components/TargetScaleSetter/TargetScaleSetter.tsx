@@ -8,28 +8,44 @@ export const TargetScaleSetter = () => {
 
   const [unitCount, setUnitCount] = useState<string | number>(4);
   const [unitWeight, setUnitWeight] = useState<string | number>(250);
+  const [percentOver, setPercentOver] = useState<string | number>(0);
 
   useEffect(() => {
-    setTargetWeight((unitWeight as number) * (unitCount as number));
-  }, [unitCount, unitWeight, setTargetWeight]);
+    const calculatedWeight =
+      ((unitWeight as number) *
+        (unitCount as number) *
+        (100 + (percentOver as number))) /
+      100;
+    setTargetWeight(Math.round(calculatedWeight));
+  }, [unitCount, unitWeight, setTargetWeight, percentOver]);
   return (
     <article className=" w-full border p-2">
       <h2>Scaling</h2>
       <div className="flex gap-2 flex-wrap">
         <NumberInput
-          className=" w-72"
+          className=" w-60"
           value={unitCount}
           label={"Number of units (pizza, loaf, etc)"}
           onChange={setUnitCount}
         />{" "}
         <NumberInput
-          className=" w-72"
+          className=" w-60"
           value={unitWeight}
           label={"Dough Weight per unit (g)"}
           onChange={setUnitWeight}
         />
+        <NumberInput
+          className=" w-40"
+          min={0}
+          max={10}
+          step={0.1}
+          decimalScale={1}
+          value={percentOver}
+          label={"Percent Overage"}
+          onChange={setPercentOver}
+        />
       </div>
-      <p aria-live="polite">total weight: {targetWeight}g</p>
+      <p aria-live="polite">total recipe weight: {targetWeight}g</p>
       <div>Precision Mode: to be implemented later</div>
     </article>
   );
