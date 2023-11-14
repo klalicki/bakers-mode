@@ -1,5 +1,5 @@
 import { RecipeViewer } from "./components/RecipeViewer/RecipeViewer";
-import { TargetScaleSetter } from "./components/TargetScaleSetter/TargetScaleSetter";
+// import { TargetScaleSetter } from "./components/TargetScaleSetter/TargetScaleSetter";
 import { ScalerWrapper } from "./context/ScalerContext";
 import "@mantine/core/styles.css";
 
