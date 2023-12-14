@@ -1,5 +1,5 @@
 import { PropsWithChildren, createContext, useEffect, useState } from "react";
-import { sampleData } from "../data/sampleData";
+// import { sampleData } from "../data/sampleData";
 import {
   ZRecipeData,
   RecipeData,
@@ -15,6 +15,7 @@ export type ScalerContextType = {
   ingredientList: RecipeIngredient[];
   schemaErrorText: string;
   loadFromJSON: (jsonData: string) => void;
+  isRecipeLoaded: boolean;
 };
 
 export const ScalerContext = createContext<ScalerContextType | null>(null);
@@ -26,17 +27,18 @@ export const ScalerWrapper = (props: PropsWithChildren) => {
   const [targetWeight, setTargetWeight] = useState(3102);
   const [ingredientList, setIngredientList] = useState<RecipeIngredient[]>([]);
   const [schemaErrorText, setSchemaErrorText] = useState("");
+  const [isRecipeLoaded, setIsRecipeLoaded] = useState(false);
 
   const loadFromJSON = (jsonData: string) => {
     try {
       const newDataObj = JSON.parse(jsonData);
       validateAndLoad(newDataObj);
+      // setSchemaErrorText("");
     } catch {
       setSchemaErrorText(
         "Error loading the recipe file. File is not readable as a JSON file"
       );
     }
-    console.log(jsonData);
   };
 
   const validateAndLoad = (newData: any) => {
@@ -57,6 +59,7 @@ export const ScalerWrapper = (props: PropsWithChildren) => {
   // handles calculating the total weight of the original recipe for the scaling function
 
   const loadRecipe = (newRecipe: RecipeData) => {
+    setSchemaErrorText("");
     //add ingredient dictionary to context
     setIngredientList(newRecipe.ingredients);
     // calculate the total weight of the original recipe
@@ -74,6 +77,7 @@ export const ScalerWrapper = (props: PropsWithChildren) => {
     setRecipe(newRecipe);
     setRecipeWeight(totalWeight);
     scaleRecipe();
+    setIsRecipeLoaded(true);
     // console.log(scaledRecipe);
   };
   // scales the recipe to the new target weight and saves it to scaledRecipe
@@ -90,7 +94,7 @@ export const ScalerWrapper = (props: PropsWithChildren) => {
     setScaledRecipe({ ...recipe, steps: newSteps });
   };
   useEffect(() => {
-    validateAndLoad(sampleData);
+    // validateAndLoad(sampleData);
     scaleRecipe();
     console.log(scaledRecipe);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -105,6 +109,7 @@ export const ScalerWrapper = (props: PropsWithChildren) => {
         ingredientList,
         schemaErrorText,
         loadFromJSON,
+        isRecipeLoaded,
       }}
     >
       {props.children}

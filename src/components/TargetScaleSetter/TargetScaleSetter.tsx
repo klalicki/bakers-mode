@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { ScalerContext, ScalerContextType } from "../../context/ScalerContext";
 import { NumberInput } from "@mantine/core";
 export const TargetScaleSetter = () => {
-  const { setTargetWeight, targetWeight } = useContext(
+  const { setTargetWeight, targetWeight, isRecipeLoaded } = useContext(
     ScalerContext
   ) as ScalerContextType;
 
@@ -27,12 +27,14 @@ export const TargetScaleSetter = () => {
           value={unitCount}
           label={"Number of units (pizza, loaf, etc)"}
           onChange={setUnitCount}
+          disabled={!isRecipeLoaded}
         />{" "}
         <NumberInput
           className=" w-60"
           value={unitWeight}
           label={"Dough Weight per unit (g)"}
           onChange={setUnitWeight}
+          disabled={!isRecipeLoaded}
         />
         <NumberInput
           className=" w-40"
@@ -43,6 +45,7 @@ export const TargetScaleSetter = () => {
           value={percentOver}
           label={"Percent Overage"}
           onChange={setPercentOver}
+          disabled={!isRecipeLoaded}
         />
       </div>
       <p aria-live="polite">total recipe weight: {targetWeight}g</p>
