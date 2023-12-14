@@ -1,7 +1,7 @@
 import { PropsWithChildren, createContext, useEffect, useState } from "react";
 import { sampleData } from "../data/sampleData";
-import { z } from "zod";
 import {
+  ZRecipeData,
   RecipeData,
   RecipeIngredient,
   blankRecipe,
@@ -9,10 +9,11 @@ import {
 
 export type ScalerContextType = {
   scaledRecipe: RecipeData;
-  loadRecipe: (newRecipe: RecipeData) => void;
+  validateAndLoad: (newRecipe: any) => void;
   setTargetWeight: (newWeight: number) => void;
   targetWeight: number;
   ingredientList: RecipeIngredient[];
+  schemaErrorText: string;
 };
 
 export const ScalerContext = createContext<ScalerContextType | null>(null);
@@ -23,9 +24,25 @@ export const ScalerWrapper = (props: PropsWithChildren) => {
   const [recipeWeight, setRecipeWeight] = useState(0);
   const [targetWeight, setTargetWeight] = useState(3102);
   const [ingredientList, setIngredientList] = useState<RecipeIngredient[]>([]);
+  const [schemaErrorText, setSchemaErrorText] = useState("");
+
+  const validateAndLoad = (newData: any) => {
+    try {
+      ZRecipeData.parse(newData);
+      loadRecipe(newData);
+    } catch (error) {
+      // the new data does not fit the expected schema :(
+      setSchemaErrorText(
+        "Error loading the recipe file. File is not a valid recipe."
+      );
+      // console.log(error);
+      // TODO: add a visible error when the data does not match
+    }
+  };
 
   // function that loads a new recipe into the context object
   // handles calculating the total weight of the original recipe for the scaling function
+
   const loadRecipe = (newRecipe: RecipeData) => {
     //add ingredient dictionary to context
     setIngredientList(newRecipe.ingredients);
@@ -60,7 +77,7 @@ export const ScalerWrapper = (props: PropsWithChildren) => {
     setScaledRecipe({ ...recipe, steps: newSteps });
   };
   useEffect(() => {
-    loadRecipe(sampleData);
+    validateAndLoad(sampleData);
     scaleRecipe();
     console.log(scaledRecipe);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,10 +86,11 @@ export const ScalerWrapper = (props: PropsWithChildren) => {
     <ScalerContext.Provider
       value={{
         scaledRecipe,
-        loadRecipe,
+        validateAndLoad,
         setTargetWeight,
         targetWeight,
         ingredientList,
+        schemaErrorText,
       }}
     >
       {props.children}

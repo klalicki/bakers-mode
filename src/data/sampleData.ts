@@ -1,6 +1,6 @@
-import { RecipeData } from "../types/RecipeDataTypes";
+// import { RecipeData } from "../types/RecipeDataTypes";
 
-export const sampleData: RecipeData = {
+export const sampleData = {
   title: "My First Pizza",
   description: "This is a sample pizza recipe",
   ingredients: [
