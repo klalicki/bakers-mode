@@ -1,26 +1,37 @@
-export type RecipeIngredient = {
-  ingredientID: string;
-  friendlyName: string;
-};
+import { z } from "zod";
 
-export type RecipeIngredientMeasured = {
-  qty: number;
-  ingredientID: string;
-};
+export const ZRecipeIngredient = z.object({
+  ingredientID: z.string(),
+  friendlyName: z.string(),
+});
 
-export type RecipeStep = {
-  title: string;
-  ingredients: RecipeIngredientMeasured[];
-  text: string;
-};
+export type RecipeIngredient = z.infer<typeof ZRecipeIngredient>;
 
-export type RecipeData = {
-  title: string;
-  description: string;
-  ingredients: RecipeIngredient[];
-  steps: RecipeStep[];
-  cookingNotes: string[];
-};
+export const ZRecipeIngredientMeasured = z.object({
+  qty: z.number(),
+  ingredientID: z.string(),
+});
+
+export type RecipeIngredientMeasured = z.infer<
+  typeof ZRecipeIngredientMeasured
+>;
+
+export const ZRecipeStep = z.object({
+  title: z.string(),
+  ingredients: z.array(ZRecipeIngredientMeasured),
+  text: z.string(),
+});
+export type RecipeStep = z.infer<typeof ZRecipeStep>;
+
+export const ZRecipeData = z.object({
+  title: z.string(),
+  description: z.string(),
+  ingredients: z.array(ZRecipeIngredient),
+  steps: z.array(ZRecipeStep),
+  cookingNotes: z.array(z.string()),
+});
+
+export type RecipeData = z.infer<typeof ZRecipeData>;
 
 export const blankRecipe: RecipeData = {
   title: "",
