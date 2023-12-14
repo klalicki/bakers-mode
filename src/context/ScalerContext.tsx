@@ -9,11 +9,12 @@ import {
 
 export type ScalerContextType = {
   scaledRecipe: RecipeData;
-  validateAndLoad: (newRecipe: any) => void;
+  // validateAndLoad: (newRecipe: any) => void;
   setTargetWeight: (newWeight: number) => void;
   targetWeight: number;
   ingredientList: RecipeIngredient[];
   schemaErrorText: string;
+  loadFromJSON: (jsonData: string) => void;
 };
 
 export const ScalerContext = createContext<ScalerContextType | null>(null);
@@ -25,6 +26,18 @@ export const ScalerWrapper = (props: PropsWithChildren) => {
   const [targetWeight, setTargetWeight] = useState(3102);
   const [ingredientList, setIngredientList] = useState<RecipeIngredient[]>([]);
   const [schemaErrorText, setSchemaErrorText] = useState("");
+
+  const loadFromJSON = (jsonData: string) => {
+    try {
+      const newDataObj = JSON.parse(jsonData);
+      validateAndLoad(newDataObj);
+    } catch {
+      setSchemaErrorText(
+        "Error loading the recipe file. File is not readable as a JSON file"
+      );
+    }
+    console.log(jsonData);
+  };
 
   const validateAndLoad = (newData: any) => {
     try {
@@ -86,11 +99,12 @@ export const ScalerWrapper = (props: PropsWithChildren) => {
     <ScalerContext.Provider
       value={{
         scaledRecipe,
-        validateAndLoad,
+        // validateAndLoad,
         setTargetWeight,
         targetWeight,
         ingredientList,
         schemaErrorText,
+        loadFromJSON,
       }}
     >
       {props.children}

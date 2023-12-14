@@ -1,10 +1,10 @@
-import { Dropzone, DropzoneProps, FileWithPath } from "@mantine/dropzone";
-import { Group, Text, rem } from "@mantine/core";
+import { Dropzone, FileWithPath } from "@mantine/dropzone";
+import { Group, Text } from "@mantine/core";
 import { ScalerContext, ScalerContextType } from "../../context/ScalerContext";
 import { useContext } from "react";
 
 export const FileLoader = () => {
-  const { schemaErrorText, validateAndLoad } = useContext(
+  const { schemaErrorText, loadFromJSON } = useContext(
     ScalerContext
   ) as ScalerContextType;
   return (
@@ -17,9 +17,12 @@ export const FileLoader = () => {
           const fileReader = new FileReader();
           // add an event listener to process the file when it is loaded
           fileReader.addEventListener("load", () => {
-            const newData = JSON.parse(fileReader.result as string);
-            validateAndLoad(newData);
-            console.log(newData);
+            loadFromJSON(fileReader.result as string);
+            // try {
+            //   const newData = JSON.parse(fileReader.result as string);
+            //   // validateAndLoad(newData);
+            //   console.log(newData);
+            // } catch {}
           });
           // get the first returned file, and read it as text
           fileReader.readAsText(files[0]);
