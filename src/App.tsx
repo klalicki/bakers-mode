@@ -1,5 +1,5 @@
 import { FileLoader } from "./components/FileLoader/FileLoader";
-import { RecipeViewer } from "./components/RecipeViewer/RecipeViewer";
+import { RecipeViewerWrapper } from "./components/RecipeViewerWrapper/RecipeViewerWrapper";
 // import { TargetScaleSetter } from "./components/TargetScaleSetter/TargetScaleSetter";
 import { ScalerWrapper } from "./context/ScalerContext";
 import "@mantine/core/styles.css";
@@ -13,8 +13,8 @@ const App = () => {
           <h2>Bakers Mode</h2>
           <FileLoader />
         </header>
-        <main className="max-w-3xl">
-          <RecipeViewer />
+        <main className="max-w-3xl p-2">
+          <RecipeViewerWrapper />
         </main>
       </ScalerWrapper>
     </div>
