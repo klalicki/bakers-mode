@@ -9,11 +9,14 @@ const App = () => {
   return (
     <div className="flex flex-col items-center">
       <ScalerWrapper>
-        <header>
-          <h2>Bakers Mode</h2>
-          <FileLoader />
+        <header className="w-full bg-red-500 p-2 text-white flex justify-between items-center ">
+          <h2 className=" text-xl font-bold">Bakers Mode &gt; Viewer</h2>
+          <button className="font-bold px-2 py-1 border-white  border-2 rounded-md">
+            Load Sample Recipe (not implemented yet)
+          </button>
         </header>
-        <main className="max-w-3xl p-2">
+        <main className="max-w-3xl pt-4 pb-4">
+          <FileLoader />
           <RecipeViewerWrapper />
         </main>
       </ScalerWrapper>
