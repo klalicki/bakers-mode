@@ -1,5 +1,5 @@
 import { PropsWithChildren, createContext, useEffect, useState } from "react";
-// import { sampleData } from "../data/sampleData";
+import { sampleData } from "../data/sampleData";
 import {
   ZRecipeData,
   RecipeData,
@@ -94,7 +94,7 @@ export const ScalerWrapper = (props: PropsWithChildren) => {
     setScaledRecipe({ ...recipe, steps: newSteps });
   };
   useEffect(() => {
-    // validateAndLoad(sampleData);
+    validateAndLoad(sampleData);
     scaleRecipe();
     console.log(scaledRecipe);
     // eslint-disable-next-line react-hooks/exhaustive-deps

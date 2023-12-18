@@ -12,10 +12,10 @@ export const RecipeViewer = () => {
   if (isRecipeLoaded) {
     return (
       <section className="p-4 flex flex-col gap-4">
-        <h1 className=" text-xl font-bold focus">{scaledRecipe.title}</h1>
+        <h1 className=" text-2xl font-bold focus">{scaledRecipe.title}</h1>
         <p>{scaledRecipe.description}</p>
         <TargetScaleSetter />
-        <h2>Steps</h2>
+        <h2 className="text-xl">Steps</h2>
 
         <ol className="flex flex-col gap-3">
           {scaledRecipe.steps.map((step, index) => {
@@ -34,7 +34,7 @@ export const RecipeViewer = () => {
             );
           })}
         </ol>
-        <h2>Cooking Notes</h2>
+        <h2 className="text-xl">Cooking Notes</h2>
         <ul>
           {scaledRecipe.cookingNotes.map((item) => {
             return <li>{item}</li>;

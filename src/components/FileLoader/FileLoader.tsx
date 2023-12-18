@@ -8,7 +8,7 @@ export const FileLoader = () => {
     ScalerContext
   ) as ScalerContextType;
   return (
-    <section>
+    <section className="flex  gap-4 items-center">
       <h3>Load a Recipe</h3>
       <Dropzone
         accept={{ "application/json": [".json"] }}
@@ -33,7 +33,7 @@ export const FileLoader = () => {
         <Group
           justify="center"
           gap="xl"
-          mih={220}
+          mih={45}
           style={{ pointerEvents: "none" }}
         >
           <Dropzone.Accept>
@@ -44,7 +44,7 @@ export const FileLoader = () => {
           </Dropzone.Reject>
 
           <div>
-            <Text size="xl" inline>
+            <Text size="md" inline>
               Drag a recipe file here, or click to select a file.
             </Text>
           </div>

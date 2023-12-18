@@ -20,7 +20,7 @@ export const TargetScaleSetter = () => {
   }, [unitCount, unitWeight, setTargetWeight, percentOver]);
   return (
     <article className=" w-full border p-2">
-      <h2>Scaling</h2>
+      <h2 className="text-xl">Scaling</h2>
       <div className="flex gap-2 flex-wrap">
         <NumberInput
           className=" w-60"
@@ -48,8 +48,10 @@ export const TargetScaleSetter = () => {
           disabled={!isRecipeLoaded}
         />
       </div>
-      <p aria-live="polite">total recipe weight: {targetWeight}g</p>
-      <div>Precision Mode: to be implemented later</div>
+      <p className="w-full text-right mt-2" aria-live="polite">
+        total recipe weight: {targetWeight}g
+      </p>
+      {/* <div>Precision Mode: to be implemented later</div> */}
     </article>
   );
 };

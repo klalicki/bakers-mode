@@ -1,8 +1,9 @@
 // import { RecipeData } from "../types/RecipeDataTypes";
 
 export const sampleData = {
-  // title: "My First Pizza",
-  description: "This is a sample pizza recipe",
+  title: "My First Pizza",
+  description:
+    "This is a basic pizza crust that works well in a pizza oven or regular oven",
   ingredients: [
     {
       ingredientID: "0",
