@@ -1,4 +1,4 @@
-import { FileLoader } from "./components/FileLoader/FileLoader";
+// import { FileLoader } from "./components/FileLoader/FileLoader";
 import { RecipeViewerWrapper } from "./components/RecipeViewerWrapper/RecipeViewerWrapper";
 // import { TargetScaleSetter } from "./components/TargetScaleSetter/TargetScaleSetter";
 
