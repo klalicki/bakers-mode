@@ -16,7 +16,7 @@ const App = () => {
           Load Sample Recipe
         </button>
       </header>
-      <main className="w-full pt-4 pb-4 flex flex-col items-center">
+      <main className="w-full flex flex-col items-center">
         {/* <FileLoader /> */}
         <RecipeViewerWrapper />
       </main>

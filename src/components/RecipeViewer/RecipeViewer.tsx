@@ -11,7 +11,7 @@ export const RecipeViewer = () => {
   const stepCount = scaledRecipe.steps.length;
   if (isRecipeLoaded) {
     return (
-      <section className="p-4 flex flex-col gap-4">
+      <section className="p-4 flex flex-col gap-2">
         <h1 className=" text-2xl font-bold focus">{scaledRecipe.title}</h1>
         <p>{scaledRecipe.description}</p>
         <TargetScaleSetter />
