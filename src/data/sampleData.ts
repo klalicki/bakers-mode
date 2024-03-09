@@ -50,12 +50,12 @@ export const sampleData = {
     },
     {
       title: "Salt",
-      ingredients: [{ qty: 14, ingredientID: "1" }],
+      ingredients: [{ qty: 14, ingredientID: "2" }],
       text: "Add salt. Mix on medium speed until fully incorporated into the dough.",
     },
     {
       title: "Oil",
-      ingredients: [{ qty: 20, ingredientID: "2" }],
+      ingredients: [{ qty: 20, ingredientID: "1" }],
       text: "Add oil with mixer running on medium speed, and mix until gluten is fully developed.",
     },
     {
