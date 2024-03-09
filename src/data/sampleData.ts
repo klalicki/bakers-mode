@@ -11,11 +11,11 @@ export const sampleData = {
     },
     {
       ingredientID: "1",
-      friendlyName: "salt",
+      friendlyName: "Olive Oil",
     },
     {
       ingredientID: "2",
-      friendlyName: "sugar",
+      friendlyName: "Salt",
     },
     {
       ingredientID: "3",
@@ -27,37 +27,41 @@ export const sampleData = {
     },
     {
       ingredientID: "5",
-      friendlyName: "vital wheat gluten",
-    },
-    {
-      ingredientID: "6",
-      friendlyName: "all-purpose flour",
+      friendlyName: "bread flour",
     },
   ],
   steps: [
     {
-      title: "Wet ingredients",
+      title: "Dissolve Yeast",
       ingredients: [
-        { qty: 552, ingredientID: "0" },
-        { qty: 24, ingredientID: "1" },
-        { qty: 9, ingredientID: "2" },
-        { qty: 6, ingredientID: "3" },
+        { qty: 410, ingredientID: "0" },
+
+        { qty: 3, ingredientID: "3" },
       ],
-      text: "combine these ingredients in stand mixer bowl, stir with dough hook.",
+      text: "combine these ingredients in stand mixer bowl, whisk to combine",
     },
     {
       title: "Flours",
       ingredients: [
-        { qty: 880, ingredientID: "4" },
-        { qty: 40, ingredientID: "5" },
-        { qty: 40, ingredientID: "6" },
+        { qty: 450, ingredientID: "4" },
+        { qty: 140, ingredientID: "5" },
       ],
-      text: "add flours to liquid, and mix with dough hook on speed 4 for 10 minutes. The dough will be relatively wet.",
+      text: "Add flours. Mix on low speed until shaggy.",
     },
     {
-      title: "Bulk Ferment",
+      title: "Salt",
+      ingredients: [{ qty: 14, ingredientID: "1" }],
+      text: "Add salt. Mix on medium speed until fully incorporated into the dough.",
+    },
+    {
+      title: "Oil",
+      ingredients: [{ qty: 20, ingredientID: "2" }],
+      text: "Add oil with mixer running on medium speed, and mix until gluten is fully developed.",
+    },
+    {
+      title: "Rest",
       ingredients: [],
-      text: "Cover bowl, and rise at room temperature for 2 hours.",
+      text: "Cover bowl, and rest at room temperature for 20 minutes",
     },
     {
       title: "Scaling",
@@ -67,7 +71,7 @@ export const sampleData = {
     {
       title: "Proofing",
       ingredients: [],
-      text: "Proof dough for at least 30 minutes while the oven preheats",
+      text: "Proof dough for about 4 hours at room temp",
     },
   ],
   cookingNotes: [
