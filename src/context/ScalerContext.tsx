@@ -1,5 +1,5 @@
 import { PropsWithChildren, createContext, useEffect, useState } from "react";
-import { sampleData } from "../data/sampleData";
+import { sampleData } from "../data/pizzaGF";
 import {
   ZRecipeData,
   RecipeData,
